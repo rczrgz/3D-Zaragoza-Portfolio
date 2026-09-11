@@ -43,7 +43,7 @@ export interface ExperienceItem {
   company: string;
   period: string;
   location: string;
-  type: 'Full-Time' | 'Freelance' | 'Contract';
+  type: 'Full-Time' | 'Freelance' | 'Contract' | 'Project-Based' | 'Internship' | string;
   description: string;
   highlights: string[];
   technologies: string[];

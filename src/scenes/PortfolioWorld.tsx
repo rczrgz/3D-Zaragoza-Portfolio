@@ -7,7 +7,7 @@ import { Minimap } from '../components/ui/Minimap';
 import { InfoPanel } from '../components/ui/InfoPanel';
 import { WalkHUD } from '../components/ui/WalkHUD';
 import { LoadingScreen } from '../components/ui/LoadingScreen';
-import { ClassicPortfolio } from '../components/ui/ClassicPortfolio';
+import { ExternalLink, Compass } from 'lucide-react';
 import { DistrictId, Project, CameraMode } from '../types';
 import { soundManager } from '../utils/sound';
 
@@ -16,7 +16,6 @@ export const PortfolioWorld: React.FC = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [cameraMode, setCameraMode] = useState<CameraMode>('orbit');
   const [nearbyDistrict, setNearbyDistrict] = useState<DistrictId | null>(null);
-  const [showClassic, setShowClassic] = useState<boolean>(false);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [loadProgress, setLoadProgress] = useState<number>(20);
   const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(true);
@@ -29,11 +28,9 @@ export const PortfolioWorld: React.FC = () => {
       const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
       if (!gl) {
         setWebGLSupported(false);
-        setShowClassic(true);
       }
     } catch {
       setWebGLSupported(false);
-      setShowClassic(true);
     }
   }, []);
 
@@ -85,9 +82,28 @@ export const PortfolioWorld: React.FC = () => {
     if (next) soundManager.playSelect();
   };
 
-  // If user chooses classic portfolio or WebGL is not supported
-  if (showClassic || !webGLSupported) {
-    return <ClassicPortfolio onBackTo3D={() => setShowClassic(false)} />;
+  // If WebGL is not supported
+  if (!webGLSupported) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center p-6 text-center">
+        <div className="w-16 h-16 rounded-3xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mb-4">
+          <Compass className="w-8 h-8 animate-spin" style={{ animationDuration: '8s' }} />
+        </div>
+        <h2 className="text-2xl font-black mb-2 tracking-tight">3D World View</h2>
+        <p className="text-slate-400 max-w-md text-sm mb-6 leading-relaxed">
+          WebGL hardware acceleration is not active on this browser or device. You can view Eric Zaragoza's standard portfolio directly.
+        </p>
+        <a
+          href="https://eric-zaragoza-portfolio.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-600 to-indigo-600 text-white text-sm font-bold shadow-xl shadow-sky-500/25 hover:scale-105 active:scale-95 transition-all"
+        >
+          <span>Open Portfolio (eric-zaragoza-portfolio.vercel.app)</span>
+          <ExternalLink className="w-4 h-4" />
+        </a>
+      </div>
+    );
   }
 
   return (
@@ -128,7 +144,6 @@ export const PortfolioWorld: React.FC = () => {
         cameraMode={cameraMode}
         onSelectDistrict={handleSelectDistrict}
         onToggleCameraMode={handleToggleCameraMode}
-        onOpenClassicPortfolio={() => setShowClassic(true)}
         isSoundEnabled={isSoundEnabled}
         onToggleSound={handleToggleSound}
       />

@@ -11,6 +11,7 @@ import {
   Volume2,
   VolumeX,
   FileText,
+  ExternalLink,
   Sparkles,
   Footprints,
   type LucideIcon,
@@ -23,7 +24,6 @@ interface HeaderProps {
   cameraMode: CameraMode;
   onSelectDistrict: (id: DistrictId) => void;
   onToggleCameraMode: () => void;
-  onOpenClassicPortfolio: () => void;
   isSoundEnabled: boolean;
   onToggleSound: () => void;
 }
@@ -33,7 +33,6 @@ export const Header: React.FC<HeaderProps> = ({
   cameraMode,
   onSelectDistrict,
   onToggleCameraMode,
-  onOpenClassicPortfolio,
   isSoundEnabled,
   onToggleSound,
 }) => {
@@ -148,18 +147,19 @@ export const Header: React.FC<HeaderProps> = ({
             {isSoundEnabled ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
           </button>
 
-          {/* Classic Portfolio Toggle (Accessible 2D Mode) */}
-          <button
-            onClick={() => {
-              soundManager.playSelect();
-              onOpenClassicPortfolio();
-            }}
+          {/* Classic Portfolio Redirect Button */}
+          <a
+            href="https://eric-zaragoza-portfolio.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundManager.playSelect()}
             className="flex items-center gap-1.5 bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white text-xs font-semibold px-3 py-2 rounded-xl shadow-lg border border-sky-400/30 transition-all cursor-pointer hover:scale-105 active:scale-95"
-            title="Open standard 2D portfolio layout"
+            title="Open Classic Portfolio (https://eric-zaragoza-portfolio.vercel.app/)"
           >
             <FileText className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Classic Portfolio</span>
-          </button>
+            <ExternalLink className="w-3 h-3 text-sky-200" />
+          </a>
         </div>
       </div>
     </header>
