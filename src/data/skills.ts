@@ -1,0 +1,96 @@
+import { SkillCategory } from '../types';
+
+export const skillCategoriesData: SkillCategory[] = [
+  {
+    id: 'cms-ecommerce',
+    title: 'CMS & E-Commerce',
+    iconName: 'ShoppingBag',
+    skills: [
+      { name: 'WordPress', level: 'Advanced', highlight: true },
+      { name: 'WooCommerce', level: 'Advanced', highlight: true },
+      { name: 'Shopify', level: 'Advanced', highlight: true },
+      { name: 'Elementor Pro', level: 'Advanced', highlight: true },
+      { name: 'Custom WP Plugins', level: 'Advanced', highlight: true },
+      { name: 'Shopify Liquid', level: 'Proficient' },
+      { name: 'Store Maintenance & Migrations', level: 'Advanced' },
+      { name: 'Payment Gateways (Stripe/PayPal)', level: 'Advanced' },
+    ],
+  },
+  {
+    id: 'frontend',
+    title: 'Frontend Development',
+    iconName: 'Code',
+    skills: [
+      { name: 'JavaScript (ES6+)', level: 'Advanced', highlight: true },
+      { name: 'TypeScript', level: 'Advanced', highlight: true },
+      { name: 'React', level: 'Advanced', highlight: true },
+      { name: 'HTML5', level: 'Advanced' },
+      { name: 'CSS3', level: 'Advanced' },
+      { name: 'Tailwind CSS', level: 'Advanced', highlight: true },
+      { name: 'Responsive Web Design', level: 'Advanced' },
+      { name: 'Vite / Webpack', level: 'Proficient' },
+    ],
+  },
+  {
+    id: 'backend',
+    title: 'Backend & APIs',
+    iconName: 'Server',
+    skills: [
+      { name: 'PHP', level: 'Advanced', highlight: true },
+      { name: 'Node.js / Express', level: 'Proficient' },
+      { name: 'RESTful API Architecture', level: 'Advanced' },
+      { name: 'WordPress REST API', level: 'Advanced' },
+      { name: 'Authentication & Security', level: 'Proficient' },
+      { name: 'Server Deployment & Caching', level: 'Proficient' },
+    ],
+  },
+  {
+    id: 'mobile',
+    title: 'Mobile Development',
+    iconName: 'Smartphone',
+    skills: [
+      { name: 'Flutter', level: 'Proficient', highlight: true },
+      { name: 'Dart', level: 'Proficient', highlight: true },
+      { name: 'Cross-Platform Android & iOS', level: 'Proficient' },
+      { name: 'Mobile State Management', level: 'Proficient' },
+      { name: 'Mobile App Store Deployments', level: 'Familiar' },
+    ],
+  },
+  {
+    id: 'database',
+    title: 'Database Management',
+    iconName: 'Database',
+    skills: [
+      { name: 'MySQL', level: 'Advanced', highlight: true },
+      { name: 'Database Normalization', level: 'Proficient' },
+      { name: 'Query Optimization & Indexing', level: 'Proficient' },
+      { name: 'Relational Schema Design', level: 'Advanced' },
+      { name: 'Data Backups & Recovery', level: 'Advanced' },
+    ],
+  },
+  {
+    id: 'seo',
+    title: 'SEO & Performance',
+    iconName: 'TrendingUp',
+    skills: [
+      { name: 'On-Page Technical SEO', level: 'Advanced', highlight: true },
+      { name: 'Core Web Vitals Optimization', level: 'Advanced', highlight: true },
+      { name: 'Google Search Console / Analytics', level: 'Proficient' },
+      { name: 'Schema Markup & Structured Data', level: 'Advanced' },
+      { name: 'Site Speed & Caching Strategies', level: 'Advanced' },
+    ],
+  },
+  {
+    id: 'tools',
+    title: 'Tools & Workflow',
+    iconName: 'Wrench',
+    skills: [
+      { name: 'Git & GitHub', level: 'Advanced' },
+      { name: 'VS Code & PHPStorm', level: 'Advanced' },
+      { name: 'Figma to Code', level: 'Advanced' },
+      { name: 'cPanel / Hostinger / Cloudways', level: 'Advanced' },
+      { name: 'Postman & API Testing', level: 'Proficient' },
+      { name: 'Chrome DevTools Auditing', level: 'Advanced' },
+    ],
+  },
+];
