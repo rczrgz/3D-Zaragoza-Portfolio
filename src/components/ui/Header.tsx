@@ -12,6 +12,8 @@ import {
   VolumeX,
   FileText,
   ExternalLink,
+  Github,
+  Linkedin,
   Sparkles,
   Footprints,
   type LucideIcon,
@@ -134,6 +136,32 @@ export const Header: React.FC<HeaderProps> = ({
               </>
             )}
           </button>
+
+          {/* GitHub Profile */}
+          <a
+            href="https://github.com/rczrgz"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundManager.playSelect()}
+            className="p-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-slate-300 hover:text-white backdrop-blur-md border border-white/15 shadow-lg transition-all cursor-pointer hover:scale-105 active:scale-95"
+            title="GitHub Profile (github.com/rczrgz)"
+            aria-label="GitHub Profile"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+
+          {/* LinkedIn Profile */}
+          <a
+            href="https://www.linkedin.com/in/eric-zaragoza-7408a6252/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundManager.playSelect()}
+            className="p-2 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-blue-400 hover:text-blue-300 backdrop-blur-md border border-white/15 shadow-lg transition-all cursor-pointer hover:scale-105 active:scale-95"
+            title="LinkedIn Profile"
+            aria-label="LinkedIn Profile"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
 
           {/* Sound Toggle */}
           <button
