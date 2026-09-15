@@ -18,6 +18,7 @@ export interface Project {
   technologies: string[];
   role: string;
   features: string[];
+  imageUrl?: string;
   githubUrl?: string;
   liveUrl?: string;
   figmaUrl?: string;

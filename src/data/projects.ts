@@ -1,12 +1,37 @@
 import { Project } from '../types';
+import projectWHN from '../assets/image-website/ProjectWHN.png';
+import projectLTD from '../assets/image-website/ProjectLTD.png';
+import projectPicpa from '../assets/image-website/ProjectPicpa.png';
+import projectMamas from '../assets/image-website/ProjectMamas.png';
+import projectKids from '../assets/image-website/ProjectKids.png';
 
 export const projectsData: Project[] = [
   {
+    id: 'wonderhome-naturals',
+    name: 'WonderHome Naturals',
+    subtitle: 'Plant-Based & Eco-Conscious Home Care E-Commerce',
+    description:
+      'Official WordPress & WooCommerce website for WonderHome Naturals, delivering non-toxic, plant-based home care solutions. Engineered high-converting product showcases, custom category filtration, localized Philippine payment gateways, and responsive mobile architecture.',
+    technologies: ['WordPress', 'WooCommerce', 'PHP', 'Elementor Pro', 'Custom CSS', 'Payment Gateways'],
+    role: 'Lead WordPress Developer',
+    features: [
+      'Custom WooCommerce product showcases and natural ingredient highlights',
+      'Seamless checkout flow with Philippine payment gateway integrations (GCash, Maya, Cards)',
+      'High-speed mobile optimization maintaining excellent Core Web Vitals',
+      'Promotional banners, bundle deals, and automated customer order notifications',
+    ],
+    imageUrl: projectWHN,
+    liveUrl: 'https://wonderhomenaturals.com/',
+    category: 'WordPress',
+    color: '#10b981', // emerald green
+    buildingPosition: [-1.8, 0, 2.8],
+  },
+  {
     id: 'picpa-ireland',
-    name: 'PICPA Ireland Membership System',
+    name: 'PICPA International / Ireland',
     subtitle: 'Enterprise Association Portal & Membership Directory',
     description:
-      'Official portal for the Philippine Institute of Certified Public Accountants (PICPA) Ireland Chapter. Engineered a comprehensive membership management portal featuring secure member verification, automated dues renewals, CPD credit tracking, and custom plugin architectures.',
+      'Official portal for the Philippine Institute of Certified Public Accountants (PICPA) Ireland / International Chapter. Engineered a comprehensive membership management portal featuring secure member verification, automated dues renewals, CPD credit tracking, and custom plugin architectures.',
     technologies: ['WordPress', 'PHP', 'MySQL', 'Elementor Pro', 'Custom Plugins', 'Tailwind CSS'],
     role: 'Lead WordPress Developer',
     features: [
@@ -15,6 +40,7 @@ export const projectsData: Project[] = [
       'CPD (Continuing Professional Development) credit tracking dashboard',
       'Custom WordPress plugin written from scratch for automated receipts and member certifications',
     ],
+    imageUrl: projectPicpa,
     liveUrl: 'https://picpaireland.ie/',
     category: 'WordPress',
     color: '#2563eb', // blue
@@ -34,6 +60,7 @@ export const projectsData: Project[] = [
       'High-speed mobile optimization with stellar Core Web Vitals performance',
       'Automated order confirmation workflows and inventory tracking sync',
     ],
+    imageUrl: projectLTD,
     liveUrl: 'https://lovetodream.ph/',
     category: 'WordPress',
     color: '#0284c7', // sky blue
@@ -53,6 +80,7 @@ export const projectsData: Project[] = [
       'Multi-faceted product filtering by age, category, brand, and nursery needs',
       'Mobile-first performance audits maintaining sub-2-second page loads',
     ],
+    imageUrl: projectKids,
     liveUrl: 'https://kidsandbabygroup.myshopify.com/',
     category: 'Shopify',
     color: '#059669', // emerald
@@ -72,6 +100,7 @@ export const projectsData: Project[] = [
       'Localized checkout flow with Philippine delivery and installment payment options',
       'Comprehensive SEO architecture and structured schema for product rich snippets',
     ],
+    imageUrl: projectMamas,
     liveUrl: 'https://mamasandpapas.ph/',
     category: 'Shopify',
     color: '#ec4899', // pink/rose

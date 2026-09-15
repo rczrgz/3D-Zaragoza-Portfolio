@@ -6,6 +6,7 @@ import { BottomControls } from '../components/ui/BottomControls';
 import { Minimap } from '../components/ui/Minimap';
 import { InfoPanel } from '../components/ui/InfoPanel';
 import { WalkHUD } from '../components/ui/WalkHUD';
+import { AsherModal } from '../components/ui/AsherModal';
 import { LoadingScreen } from '../components/ui/LoadingScreen';
 import { ExternalLink, Compass } from 'lucide-react';
 import { DistrictId, Project, CameraMode } from '../types';
@@ -16,6 +17,7 @@ export const PortfolioWorld: React.FC = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [cameraMode, setCameraMode] = useState<CameraMode>('orbit');
   const [nearbyDistrict, setNearbyDistrict] = useState<DistrictId | null>(null);
+  const [isAsherModalOpen, setIsAsherModalOpen] = useState<boolean>(false);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [loadProgress, setLoadProgress] = useState<number>(20);
   const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(true);
@@ -134,6 +136,10 @@ export const PortfolioWorld: React.FC = () => {
             onSelectProject={handleSelectProject}
             onResetToWorld={handleResetToWorld}
             onNearbyDistrictChange={setNearbyDistrict}
+            onSelectCat={() => {
+              setIsAsherModalOpen(true);
+              soundManager.playMeow();
+            }}
           />
         </Suspense>
       </Canvas>
@@ -181,6 +187,12 @@ export const PortfolioWorld: React.FC = () => {
           onSelectProject={handleSelectProject}
         />
       )}
+
+      {/* Asher The British Shorthair Modal */}
+      <AsherModal
+        isOpen={isAsherModalOpen}
+        onClose={() => setIsAsherModalOpen(false)}
+      />
     </div>
   );
 };

@@ -99,6 +99,73 @@ class SoundFX {
       // AudioContext fallback
     }
   }
+
+  public playMeow() {
+    if (!this.enabled) return;
+    try {
+      this.initCtx();
+      if (!this.ctx) return;
+
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      // Realistic cat meow pitch trajectory (rising then falling)
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(420, now);
+      osc.frequency.exponentialRampToValueAtTime(740, now + 0.14);
+      osc.frequency.exponentialRampToValueAtTime(480, now + 0.42);
+
+      // Volume envelope with smooth attack and decay
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(0.09, now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.06, now + 0.28);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.45);
+    } catch {
+      // AudioContext fallback
+    }
+  }
+
+  public playPurr() {
+    if (!this.enabled) return;
+    try {
+      this.initCtx();
+      if (!this.ctx) return;
+
+      const now = this.ctx.currentTime;
+      // Low frequency purr vibration
+      const osc = this.ctx.createOscillator();
+      const lfo = this.ctx.createOscillator();
+      const lfoGain = this.ctx.createGain();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(48, now);
+
+      lfo.frequency.setValueAtTime(22, now); // 22Hz purr flutter
+      lfoGain.gain.setValueAtTime(0.04, now);
+
+      lfo.connect(gain.gain);
+
+      gain.gain.setValueAtTime(0.05, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      lfo.start(now);
+      osc.start(now);
+      lfo.stop(now + 0.7);
+      osc.stop(now + 0.7);
+    } catch {
+      // AudioContext fallback
+    }
+  }
 }
 
 export const soundManager = new SoundFX();

@@ -20,12 +20,13 @@ export const ProjectDistrict: React.FC<ProjectDistrictProps> = ({
   const radarRef = useRef<THREE.Mesh>(null);
   const ambulanceLightRef = useRef<THREE.Mesh>(null);
 
-  const picpaProject = projectsData.find((p) => p.id === 'picpa-ireland') || projectsData[0];
-  const loveToDreamProject = projectsData.find((p) => p.id === 'lovetodream') || projectsData[1];
-  const kidsAndBabyProject = projectsData.find((p) => p.id === 'kids-and-baby') || projectsData[2];
-  const mamasAndPapasProject = projectsData.find((p) => p.id === 'mamas-and-papas') || projectsData[3];
-  const optisnapProject = projectsData.find((p) => p.id === 'optisnap') || projectsData[0];
-  const erMobileProject = projectsData.find((p) => p.id === 'er-mobile') || projectsData[4];
+  const whnProject = projectsData.find((p) => p.id === 'wonderhome-naturals') || projectsData[0];
+  const picpaProject = projectsData.find((p) => p.id === 'picpa-ireland') || projectsData[1];
+  const loveToDreamProject = projectsData.find((p) => p.id === 'lovetodream') || projectsData[2];
+  const kidsAndBabyProject = projectsData.find((p) => p.id === 'kids-and-baby') || projectsData[3];
+  const mamasAndPapasProject = projectsData.find((p) => p.id === 'mamas-and-papas') || projectsData[4];
+  const optisnapProject = projectsData.find((p) => p.id === 'optisnap') || projectsData[5] || projectsData[0];
+  const erMobileProject = projectsData.find((p) => p.id === 'er-mobile') || projectsData[6] || projectsData[4];
 
   useFrame((state, delta) => {
     if (radarRef.current) {
@@ -285,6 +286,54 @@ export const ProjectDistrict: React.FC<ProjectDistrictProps> = ({
             ))
           )}
         </group>
+      </group>
+
+      {/* Project 6: WonderHome Naturals (Eco-Botanical Conservatory Pavilion) - Position: [0, 0, 3.3] */}
+      <group
+        position={[0, 0, 3.3]}
+        onClick={(e) => {
+          e.stopPropagation();
+          onSelectProject(whnProject);
+        }}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          setHoveredBuilding('wonderhome');
+          document.body.style.cursor = 'pointer';
+        }}
+        onPointerOut={() => {
+          setHoveredBuilding(null);
+          document.body.style.cursor = 'auto';
+        }}
+      >
+        <mesh castShadow position={[0, 0.9, 0]}>
+          <cylinderGeometry args={[1.2, 1.3, 1.8, 8]} />
+          <meshStandardMaterial
+            color={hoveredBuilding === 'wonderhome' ? '#34d399' : '#059669'}
+            roughness={0.25}
+            metalness={0.2}
+          />
+        </mesh>
+        {/* Botanical Glass Dome on Roof */}
+        <mesh position={[0, 1.8, 0]}>
+          <sphereGeometry args={[0.95, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2]} />
+          <meshStandardMaterial
+            color="#d1fae5"
+            roughness={0.1}
+            metalness={0.3}
+            transparent
+            opacity={0.85}
+          />
+        </mesh>
+        {/* Golden Eco Spire */}
+        <mesh position={[0, 2.75, 0]}>
+          <coneGeometry args={[0.2, 0.5, 8]} />
+          <meshBasicMaterial color="#10b981" />
+        </mesh>
+        {/* Plant / Leaf Embellishment Badge */}
+        <mesh position={[0, 0.9, 1.32]}>
+          <boxGeometry args={[1.3, 0.35, 0.05]} />
+          <meshBasicMaterial color="#047857" />
+        </mesh>
       </group>
     </group>
   );

@@ -12,6 +12,7 @@ import { SkillsBuilding } from './SkillsBuilding';
 import { ContactBuilding } from './ContactBuilding';
 import { CameraController } from './CameraController';
 import { WalkController } from './WalkController';
+import { RoamingCat } from './RoamingCat';
 import { DISTRICTS } from '../../data/districts';
 import { DistrictId, Project, CameraMode } from '../../types';
 
@@ -22,6 +23,7 @@ interface WorldSceneProps {
   onSelectProject: (project: Project) => void;
   onResetToWorld: () => void;
   onNearbyDistrictChange: (districtId: DistrictId | null) => void;
+  onSelectCat: () => void;
 }
 
 export const WorldScene: React.FC<WorldSceneProps> = ({
@@ -31,6 +33,7 @@ export const WorldScene: React.FC<WorldSceneProps> = ({
   onSelectProject,
   onResetToWorld,
   onNearbyDistrictChange,
+  onSelectCat,
 }) => {
   return (
     <>
@@ -87,6 +90,9 @@ export const WorldScene: React.FC<WorldSceneProps> = ({
 
       {/* Area 1: Home / Spawn Plaza */}
       <SpawnPlaza onSelect={() => onSelectDistrict('home')} />
+
+      {/* Special Feature: Asher, British Shorthair Roaming Companion */}
+      <RoamingCat onSelectCat={onSelectCat} />
 
       {/* Area 2: WordPress District */}
       <WordPressBuilding

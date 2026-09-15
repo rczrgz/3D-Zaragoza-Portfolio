@@ -50,10 +50,11 @@ export const InfoPanel: React.FC<InfoPanelProps> = ({
 
   const district = DISTRICTS[districtId] || DISTRICTS.home;
 
-  const picpaProject = projectsData.find((p) => p.id === 'picpa-ireland') || projectsData[0];
-  const loveToDreamProject = projectsData.find((p) => p.id === 'lovetodream') || projectsData[1];
-  const kidsAndBabyProject = projectsData.find((p) => p.id === 'kids-and-baby') || projectsData[2];
-  const mamasAndPapasProject = projectsData.find((p) => p.id === 'mamas-and-papas') || projectsData[3];
+  const whnProject = projectsData.find((p) => p.id === 'wonderhome-naturals') || projectsData[0];
+  const picpaProject = projectsData.find((p) => p.id === 'picpa-ireland') || projectsData[1];
+  const loveToDreamProject = projectsData.find((p) => p.id === 'lovetodream') || projectsData[2];
+  const kidsAndBabyProject = projectsData.find((p) => p.id === 'kids-and-baby') || projectsData[3];
+  const mamasAndPapasProject = projectsData.find((p) => p.id === 'mamas-and-papas') || projectsData[4];
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('eric.zaragoza27@gmail.com');
@@ -203,6 +204,10 @@ export const InfoPanel: React.FC<InfoPanelProps> = ({
                     Featured WordPress Client Work
                   </h4>
                   <div className="space-y-4">
+                    <ProjectCard
+                      project={whnProject}
+                      onSelect={() => onSelectProject(whnProject)}
+                    />
                     <ProjectCard
                       project={picpaProject}
                       onSelect={() => onSelectProject(picpaProject)}

@@ -18,11 +18,38 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div
       onClick={onSelect}
-      className={`rounded-2xl border transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between ${
+      className={`group rounded-2xl border transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between ${
         onSelect ? 'cursor-pointer hover:border-emerald-400/50 hover:bg-slate-800/60' : ''
       } bg-slate-800/40 border-white/10 backdrop-blur-sm`}
     >
       <div>
+        {/* Project Screenshot Preview */}
+        {project.imageUrl && (
+          <div className="mb-4 rounded-xl overflow-hidden border border-white/15 shadow-md bg-slate-950 relative">
+            <div className={`w-full overflow-hidden ${isDetailed ? 'h-64 sm:h-80' : 'h-44 sm:h-48'}`}>
+              <img
+                src={project.imageUrl}
+                alt={`${project.name} preview`}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
+              />
+            </div>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-lg bg-slate-900/85 hover:bg-slate-900 text-white text-[11px] font-semibold flex items-center gap-1.5 border border-white/20 shadow-md backdrop-blur-md transition-all hover:scale-105"
+                title={`Visit ${project.name}`}
+              >
+                <span>Live Site</span>
+                <ExternalLink className="w-3 h-3 text-emerald-400" />
+              </a>
+            )}
+          </div>
+        )}
+
         {/* Category & Badge */}
         <div className="flex items-center justify-between gap-2 mb-2">
           <span
